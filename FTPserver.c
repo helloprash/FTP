@@ -120,8 +120,7 @@ int main(void)
 
     printf("server: waiting for connections...\n");
     
-    int af = 1;
-    while(af) 
+    while(1) 
     {  // main accept() loop
         sin_size = sizeof their_addr;
         new_fd = accept(sockfd, (struct sockaddr *)&their_addr, &sin_size);
@@ -143,8 +142,8 @@ int main(void)
           
 	   strcpy(TxBuff, "Welcome to File Transfer Protocol");
 	   numbytes = send(new_fd, TxBuff, strlen(TxBuff), 0); 
-          // while(1)
-          // {
+           while(1)
+           {
 		 printf("Welcome to FTP\n");
 		 memset(&buffer, 0, sizeof buffer);
        	         memset(&RxBuff, 0, sizeof RxBuff);
@@ -236,7 +235,7 @@ int main(void)
 	                      fprintf(fptr, "%s ", RxBuff);
                       }	
 		}
-          // }
+           }
         }
         else if (retVal < 0)
         {
